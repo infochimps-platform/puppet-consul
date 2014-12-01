@@ -6,7 +6,7 @@ define consul::service(
   $check_script   = undef,
   $check_interval = undef,
 ) {
-  include consul
+  #include consul
   $id = $title
 
   $basic_hash = {
@@ -43,7 +43,7 @@ define consul::service(
   }
 
   if $port {
-    # implicit conversion from string to int so it won't be quoted in JSON 
+    # implicit conversion from string to int so it won't be quoted in JSON
     $port_hash = {
       port => $port * 1
     }

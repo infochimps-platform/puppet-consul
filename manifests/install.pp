@@ -13,7 +13,8 @@ class consul::install {
 
   if $consul::install_method == 'url' {
 
-    ensure_packages(['unzip'])
+    #ensure_packages(['unzip'])
+
     staging::file { 'consul.zip':
       source => $consul::download_url
     } ->

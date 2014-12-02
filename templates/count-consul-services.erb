@@ -1,0 +1,15 @@
+#!/bin/bash
+CONSUL=<%= scope.lookupvar('consul::bin_dir') %>/consul
+
+display_usage() {
+    echo "Count the number of active services registered with consul."
+    echo -e "\nUsage:\n$0 <service-name> \n"
+}
+
+if [  $# -le 1 ]
+then
+    display_usage
+    exit 1
+fi
+
+$CONSUL watch -type=service -service="$1" -passingonly=true | grep -c '"ID": "'$1'"'

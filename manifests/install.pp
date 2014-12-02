@@ -62,6 +62,13 @@ class consul::install {
     fail("The provided install method ${consul::install_method} is invalid")
   }
 
+  file { "${consul::bin_dir}/count-consul-services":
+    owner => 'root',
+    group => 'root',
+    mode  => '0555',
+    content => template('consul/count-consul-services.erb')
+  }
+
   case $consul::init_style {
     'upstart' : {
       file { '/etc/init/consul.conf':

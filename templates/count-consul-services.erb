@@ -6,7 +6,7 @@ display_usage() {
     echo -e "\nUsage:\n$0 <service-name> \n"
 }
 
-if [  $# -le 1 ]
+if [  $# -lt 1 ]
 then
     display_usage
     exit 1
